@@ -1,6 +1,7 @@
 # Apps independentes (repos separados)
+apps/
 battsentry/
-calc3D/
+calc3d/
 gorillas/
 missangas/
 
