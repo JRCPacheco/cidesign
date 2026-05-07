@@ -102,7 +102,8 @@ input {
   top: 1rem;
   z-index: 20;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
   align-items: center;
   gap: 1.4rem;
   margin-top: 1rem;
@@ -153,7 +154,7 @@ input {
 
 .site-nav {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   gap: 1.7rem;
 }
 
@@ -266,12 +267,11 @@ input {
 
 .hero {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.9fr);
-  gap: 3.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  /* Reduced from 100svh to avoid excessive dead space below CTAs */
-  min-height: clamp(520px, 82vh, 820px);
+  text-align: center;
+  min-height: clamp(480px, 72vh, 720px);
   padding-top: 2rem;
   padding-bottom: 3.5rem;
 }
@@ -284,14 +284,15 @@ input {
 }
 
 .hero::before {
-  left: -8%;
-  top: 11%;
-  width: 52%;
-  height: 56%;
+  left: 50%;
+  top: 5%;
+  width: 60%;
+  height: 70%;
+  transform: translateX(-50%);
   background:
     radial-gradient(circle, rgba(77, 121, 191, 0.14) 0%, rgba(77, 121, 191, 0.08) 34%, transparent 68%);
-  filter: blur(30px);
-  opacity: 0.9;
+  filter: blur(40px);
+  opacity: 0.8;
 }
 
 .hero::after {
@@ -309,7 +310,8 @@ input {
 }
 
 .hero-copy {
-  max-width: 34rem;
+  max-width: 54rem;
+  width: 100%;
 }
 
 .eyebrow {
@@ -335,7 +337,6 @@ h3 {
 }
 
 h1 {
-  max-width: 10ch;
   font-size: clamp(2.6rem, 4vw, 4.6rem);
   line-height: 0.98;
 }
@@ -362,14 +363,15 @@ h3 {
 }
 
 .hero-text {
-  max-width: 52ch;
-  margin: 1.25rem 0 0;
+  max-width: 62ch;
+  margin: 1.25rem auto 0;
   font-size: 1rem;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-top: 1.8rem;
 }
