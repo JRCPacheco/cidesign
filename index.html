@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIDesign | Produtos digitais com clareza, estrutura e proposito</title>
+  <meta
+    name="description"
+    content="A CIDesign reune aplicativos e produtos digitais com foco em utilidade real, identidade propria e evolucao consistente."
+  >
+  <!-- Security Meta Tags -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: assets/ https://portal-cash.net.br; script-src 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Garante que o conteúdo da página fique acima dos canvas de fundo */
+    .page-shell {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="CIDesign, voltar ao topo">
+        <img src="assets/brand/cidesign-logo.png" alt="" width="34" height="34">
+        <span>CIDesign</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Abrir navegacao"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#visao">Visão</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <a class="button button-primary header-cta" href="#produtos">Explorar produtos</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Identidade | Utilidade | Evolução</p>
+          <h1>Produtos digitais criados com clareza, estrutura e propósito.</h1>
+          <p class="hero-text">
+            A CIDesign reúne aplicativos e produtos digitais desenvolvidos com foco em utilidade
+            real, identidade própria e experiência consistente. A marca abriga tanto soluções
+            técnicas quanto produtos de nicho, sempre com o mesmo cuidado em clareza, confiança e
+            evolução.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#produtos">Explorar produtos</a>
+            <a class="button button-secondary" href="#visao">Nossa visão</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="product-showcase">
+            <div class="showcase-grid">
+              <div class="showcase-item">
+                <div class="product-icon product-icon-image product-icon-square product-icon-battsentry">
+                  <img src="assets/brand/battsentry-logo.png" alt="" width="56" height="56">
+                </div>
+                <div class="showcase-info">
+                  <span class="showcase-name">BattSentry</span>
+                  <span class="product-tag">Disponível</span>
+                </div>
+              </div>
+              <div class="showcase-item">
+                <div class="product-icon product-icon-image product-icon-square">
+                  <img src="assets/brand/chamada-facil-icon.png" alt="" width="56" height="56">
+                </div>
+                <div class="showcase-info">
+                  <span class="showcase-name">Chamada Fácil</span>
+                  <span class="product-tag">Disponível</span>
+                </div>
+              </div>
+              <div class="showcase-item">
+                <div class="product-icon product-icon-image product-icon-square product-icon-chamada-pro">
+                  <img src="assets/brand/chamadafacil-pro.png" alt="" width="56" height="56">
+                </div>
+                <div class="showcase-info">
+                  <span class="showcase-name">Chamada Fácil Pro</span>
+                  <span class="dev-tag">Em dev</span>
+                </div>
+              </div>
+              <div class="showcase-item">
+                <div class="product-icon product-icon-image product-icon-square product-icon-missangas">
+                  <img src="assets/brand/missangas-jane-icon.png" alt="" width="56" height="56">
+                </div>
+                <div class="showcase-info">
+                  <span class="showcase-name">Missanga's Jane</span>
+                  <span class="dev-tag">Fase avançada</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-footer">
+              <span class="showcase-count">4</span>
+              <span class="showcase-label">produtos no ecossistema</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro" id="sobre">
+        <div class="section-kicker">
+          <p class="eyebrow">Nossa visao</p>
+          <h2>Software util, claro e consistente.</h2>
+        </div>
+
+        <div class="section-body">
+          <p class="lead">
+            Acreditamos que software não precisa ser excessivo para ser valioso. Bons produtos
+            digitais nascem quando clareza, utilidade e identidade trabalham juntas, seja em
+            ferramentas técnicas, operacionais ou criativas.
+          </p>
+          <p>
+            Na CIDesign, cada projeto e pensado para cumprir uma função real no dia a dia. Em vez
+            de seguir tendências vazias, buscamos construir produtos que resolvam problemas de
+            maneira prática, respeitem o contexto de uso e mantenham personalidade própria ao
+            longo do tempo.
+          </p>
+        </div>
+      </section>
+
+      <section class="section products" id="produtos">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Produtos atuais</p>
+            <h2>Produtos com utilidade real.</h2>
+          </div>
+          <p>
+            A CIDesign já nasce com produtos concretos, desenvolvidos para necessidades específicas
+            em mobile, web e software aplicado.
+          </p>
+        </div>
+
+        <div class="products-subhead">
+          <p class="eyebrow eyebrow-soft">Disponíveis agora</p>
+          <p>Produtos já apresentados ao público e com proposta de uso clara.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card product-card-featured product-card-live">
+            <div class="product-top">
+              <div class="product-icon product-icon-image product-icon-square product-icon-battsentry">
+                <img src="assets/brand/battsentry-logo.png" alt="Logo do BattSentry" width="56" height="56">
+              </div>
+              <span class="product-tag">Disponível</span>
+            </div>
+            <h3>BattSentry</h3>
+            <p>
+              Aplicativo Android para monitoramento do carregamento da bateria, com alertas
+              configuráveis, acompanhamento da evolução da carga e foco em controle pratico no uso
+              diario.
+            </p>
+            <ul class="product-points">
+              <li>Monitoramento da carga em tempo real</li>
+              <li>Alertas por meta, voz, beep e modo noturno</li>
+              <li>Experiência util e pronta para publicações</li>
+            </ul>
+            <a class="inline-link" href="https://cidesign.net.br/battsentry/" target="_blank" rel="noopener noreferrer">Visitar o site oficial</a>
+          </article>
+
+          <article class="product-card product-card-live">
+            <div class="product-top">
+              <div class="product-icon product-icon-image product-icon-square">
+                <img src="assets/brand/chamada-facil-icon.png" alt="Logo do Chamada Facil" width="56" height="56">
+              </div>
+              <span class="product-tag">Disponível</span>
+            </div>
+            <h3>Chamada Fácil</h3>
+            <p>
+              Solução para chamada escolar com QR Code, criada para tornar a rotina de presenca mais
+              rápida, simples e acessível em diferentes dispositivos.
+            </p>
+            <ul class="product-points">
+              <li>Chamada escolar simples, rápida e 100% offline</li>
+              <li>Uso no Android e também na versão web (compatível com iPhone)</li>
+              <li>Produto já apresentado ao público com landing própria</li>
+            </ul>
+            <a class="inline-link" href="https://www.chamadafacil.net.br/" target="_blank" rel="noreferrer">Visitar site oficial</a>
+          </article>
+        </div>
+
+        <div class="products-subhead products-subhead-dev">
+          <p class="eyebrow eyebrow-soft">Em desenvolvimento</p>
+          <p>Evoluções e novos produtos que já fazem parte do ecossistema da marca.</p>
+        </div>
+
+        <div class="dev-grid">
+          <article class="dev-card dev-card-with-logo">
+            <div class="dev-top">
+              <div class="dev-product-head">
+                <div class="product-icon product-icon-image product-icon-square product-icon-chamada-pro">
+                  <img src="assets/brand/chamadafacil-pro.png" alt="Logo do Chamada Facil Pro" width="56" height="56">
+                </div>
+                <div>
+                  <h3>Chamada Fácil Pro</h3>
+                  <span class="dev-subtitle">Evolução premium do produto principal</span>
+                </div>
+              </div>
+              <span class="dev-tag">Em desenvolvimento</span>
+            </div>
+            <p>
+              Evolução premium do Chamada Fácil, pensada para operações mais amplas e maior
+              continuidade entre app e web.
+            </p>
+            <ul class="dev-points">
+              <li>Múltiplas escolas e turmas</li>
+              <li>Backup na nuvem</li>
+              <li>Login para acesso web as chamadas</li>
+            </ul>
+          </article>
+
+          <article class="dev-card dev-card-with-logo">
+            <div class="dev-top">
+              <div class="dev-product-head">
+                <div class="product-icon product-icon-image product-icon-square product-icon-missangas">
+                  <img src="assets/brand/missangas-jane-icon.png" alt="Logo do Missanga's Jane" width="56" height="56">
+                </div>
+                <div>
+                  <h3>Missanga's Jane</h3>
+                  <a class="dev-link" href="https://cidesign.net.br/missangas/" target="_blank" rel="noopener noreferrer">cidesign.net.br/missangas</a>
+                </div>
+              </div>
+              <span class="product-tag">Disponivel</span>
+            </div>
+            <p>
+              Produto autoral para projeto de pulseiras de miçangas, criado para apoiar um fluxo de
+              trabalho artesanal real, pensado para substituir o papel qudriculado, facilitando o desenho.
+            </p>
+            <ul class="dev-points">
+              <li>Voltado ao uso prático no atelie</li>
+              <li>Versão web já disponível com importação de imagem para gerar padrões</li>
+              <li>Versão Android em refinamento para publicação</li>
+              <li>Landing própria com acesso direto ao editor web</li>
+            </ul>
+          </article>
+
+          <article class="dev-card dev-card-with-logo">
+            <div class="dev-top">
+              <div class="dev-product-head">
+                <div class="product-icon product-icon-image product-icon-square product-icon-cash">
+                  <img src="assets/brand/portal-cash-logo.png" alt="Logo do Portal CASH Management" width="56" height="56">
+                </div>
+                <div>
+                  <h3>Portal CASH Management</h3>
+                  <a class="dev-link" href="https://portal-cash.net.br/" target="_blank" rel="noopener noreferrer">portal-cash.net.br</a>
+                </div>
+              </div>
+              <span class="dev-tag">Em desenvolvimento</span>
+            </div>
+            <p>
+              Portal em evolução voltado a cash management, conteúdo especializado, indicadores
+              financeiros e apoio a rotina corporativa.
+            </p>
+            <ul class="dev-points">
+              <li>Site próprio já publicado</li>
+              <li>Escopo institucional e financeiro</li>
+              <li>Expansão gradual do produto e do conteúdo</li>
+            </ul>
+          </article>
+
+          <article class="dev-card dev-card-with-logo">
+            <div class="dev-top">
+              <div class="dev-product-head">
+                <div class="product-icon product-icon-image product-icon-square product-icon-estudio">
+                  <img src="assets/brand/brand-mark.svg" alt="Logo do Estudio Academico" width="56" height="56">
+                </div>
+                <div>
+                  <h3>Estudio Academico</h3>
+                  <a class="dev-link" href="https://cidesign.net.br/estudioac/" target="_blank" rel="noopener noreferrer">cidesign.net.br/estudioac</a>
+                </div>
+              </div>
+              <span class="product-tag">Disponivel por solicitação</span>
+            </div>
+            <p>
+              Leitor inteligente para apostilas e manuscritos em PDF, com limpeza de texto,
+              organizacao por unidades e leitura por voz focada em uso real de estudo.
+            </p>
+            <ul class="dev-points">
+              <li>Importação e lapidação de textos para leitura em TTS</li>
+              <li>Edicao manual de títulos, unidades e conteúdo reconhecido</li>
+              <li>Produto publicado e operando em versão beta</li>
+            </ul>
+          </article>
+        </div>      </section>
+
+      <section class="section principles" id="visao">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Base da marca</p>
+            <h2>Uma estrutura pensada para crescer.</h2>
+          </div>
+          <p>
+            A CIDesign cresce produto por produto, com foco em qualidade, coerência visual e
+            longevidade técnica.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <article>
+            <span class="principle-number">01</span>
+            <h3>Utilidade real</h3>
+            <p>Cada produto existe para resolver uma necessidade concreta com objetividade e valor prático.</p>
+          </article>
+          <article>
+            <span class="principle-number">02</span>
+            <h3>Identidade forte</h3>
+            <p>Os produtos compartilham consistência visual, clareza e personalidade própria.</p>
+          </article>
+          <article>
+            <span class="principle-number">03</span>
+            <h3>Arquitetura organizada</h3>
+            <p>Estrutura, coerência e evolução fazem parte da construção de cada solução digital.</p>
+          </article>
+          <article>
+            <span class="principle-number">04</span>
+            <h3>Evolução contínua</h3>
+            <p>A marca avanca com calma, qualidade e visão de longo prazo, sem inflar promessas.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section ecosystem">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Ecossistema em evolução</p>
+            <h2>Crescimento solido, produto por produto.</h2>
+          </div>
+          <p>
+            A CIDesign está construindo um ecossistema digital com base em aplicações reais,
+            reunindo desde utilitários técnicos até produtos autorais de nicho. O objetivo não é
+            volume, mas relevância: criar soluções que façam sentido, funcionem bem e fortaleçam a
+            marca ao longo do tempo.
+          </p>
+        </div>
+
+        <div class="ecosystem-art" aria-hidden="true">
+          <div class="app-carousel" id="appCarousel">
+            <div class="carousel-row">
+              <button class="carousel-btn" id="carouselPrev" tabindex="-1" aria-hidden="true">&#9664;</button>
+              <div class="carousel-viewport">
+                <div class="carousel-track" id="carouselTrack">
+                  <div class="carousel-slide" data-app="BattSentry">
+                    <div class="screen-frame">
+                      <img src="assets/screens/battsentry-1.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="BattSentry">
+                    <div class="screen-frame">
+                      <img src="assets/screens/battsentry-2.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="BattSentry">
+                    <div class="screen-frame">
+                      <img src="assets/screens/battsentry-3.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="BattSentry">
+                    <div class="screen-frame">
+                      <img src="assets/screens/battsentry-4.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="Chamada Fácil">
+                    <div class="screen-frame">
+                      <img src="assets/screens/chamada-facil-1.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="Chamada Fácil">
+                    <div class="screen-frame">
+                      <img src="assets/screens/chamada-facil-2.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="Chamada Fácil">
+                    <div class="screen-frame">
+                      <img src="assets/screens/chamada-facil-3.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="carousel-slide" data-app="Chamada Fácil">
+                    <div class="screen-frame">
+                      <img src="assets/screens/chamada-facil-4.png" alt="" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-btn" id="carouselNext" tabindex="-1" aria-hidden="true">&#9654;</button>
+            </div>
+            <div class="carousel-meta">
+              <span class="carousel-app-name" id="carouselAppName">BattSentry</span>
+              <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section recess">
+        <div class="recess-card">
+          <div class="recess-badge">
+            <img src="assets/brand/gorillas-badge.png" alt="Badge do projeto Gorillas" width="140" height="140">
+          </div>
+          <div class="recess-copy">
+            <p class="eyebrow">Hora do recreio</p>
+            <h2>Porque nem tudo precisa ser produtividade.</h2>
+            <p>
+              Alguns projetos existem porque marcaram uma época, despertaram curiosidade ou simplesmente
+              mereciam voltar a vida. Gorillas é um desses casos: uma releitura pessoal de um clássico do
+              QBasic (MS-DOS) que fez parte do início da minha jornada.
+            </p>
+            <a class="button button-secondary" href="gorillas/index.html">Abrir Gorillas</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-cta" id="contato">
+        <div class="contact-card">
+          <p class="eyebrow">Contato</p>
+          <h2>Fale com a CIDesign.</h2>
+          <p>Sugestões, parcerias ou dúvidas — estou por aqui.</p>
+
+          <div class="social-links">
+            <a class="social-link" href="mailto:cid.pacheco@gmail.com" aria-label="Enviar e-mail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>E-mail</span>
+            </a>
+            <a class="social-link" href="https://github.com/JRCPacheco" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a class="social-link" href="https://www.facebook.com/cid.pacheco" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              <span>Facebook</span>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/jrcpacheco/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="#top">
+          <img src="assets/brand/cidesign-logo.png" alt="" width="28" height="28">
+          <span>CIDesign</span>
+        </a>
+        <p>Produtos digitais com identidade, estrutura e evolução consistente.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+      <p class="footer-copy">&copy; <span id="current-year"></span> CIDesign. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <!-- Controlador de fundo animado (carrega wave-bg.js ou ripple-bg.js conforme modo salvo) -->
+  <script src="js/bg-controller.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+# Apps independentes (repos separados)
+battsentry/
+calc3D/
+gorillas/
+missangas/
+
+# Claude Code
+.agent/
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
