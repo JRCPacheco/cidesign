@@ -7,13 +7,14 @@
  * Modos:
  *   'wave'   → wave-bg.js   (ondas laterais, padrão)
  *   'ripple' → ripple-bg.js (oceano visto de cima, pseudo-3D)
+ *   'matrix' → matrix-bg.js (chuva de código azul — estilo Matrix)
  */
 (function () {
   'use strict';
 
   const LS_KEY       = 'cidesign.bgMode';
   const DEFAULT_MODE = 'wave';
-  const VALID_MODES  = ['wave', 'ripple'];
+  const VALID_MODES  = ['wave', 'ripple', 'matrix'];
 
   // Captura o diretório base do script enquanto document.currentScript ainda é válido
   const SCRIPT_BASE = (function () {
@@ -43,9 +44,10 @@
   /* ── CSS do switcher (e dos canvas) ──────────────────────── */
   const style = document.createElement('style');
   style.textContent = `
-    /* Canvas de fundo — ambos os modos */
+    /* Canvas de fundo — todos os modos */
     #wave-canvas,
-    #ripple-canvas {
+    #ripple-canvas,
+    #matrix-canvas {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -54,6 +56,12 @@
       z-index: 0;
       will-change: contents;
       transition: opacity 550ms ease;
+    }
+
+    /* Matrix: cursor pointer para interação de clique */
+    #matrix-canvas {
+      pointer-events: auto;
+      cursor: crosshair;
     }
 
     /* Fade-out ao trocar de modo */
@@ -145,7 +153,9 @@
   }
 
   function scriptFile(mode) {
-    return mode === 'ripple' ? 'ripple-bg.js' : 'wave-bg.js';
+    if (mode === 'ripple') return 'ripple-bg.js';
+    if (mode === 'matrix') return 'matrix-bg.js';
+    return 'wave-bg.js';
   }
 
   /* ── Construção do switcher ──────────────────────────────── */
@@ -170,6 +180,17 @@
       <circle cx="12" cy="12" r="9.5" opacity="0.30"/>
     </svg>`;
 
+    // Ícone C — matrix (colunas verticais com setas de queda)
+    const svgMatrix = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="6"  y1="2"  x2="6"  y2="14"/>
+      <line x1="12" y1="5"  x2="12" y2="19"/>
+      <line x1="18" y1="1"  x2="18" y2="11"/>
+      <polyline points="4,11 6,14 8,11" opacity="0.85"/>
+      <polyline points="10,16 12,19 14,16" opacity="0.85"/>
+      <polyline points="16,8 18,11 20,8" opacity="0.85"/>
+    </svg>`;
+
     el.innerHTML = `
       <button class="bgsw-btn ${currentMode === 'wave' ? 'active' : ''}"
               id="bgsw-wave"
@@ -184,6 +205,13 @@
               title="Oceano (vista de cima)">
         ${svgRipple}
       </button>
+      <div class="bgsw-divider" aria-hidden="true"></div>
+      <button class="bgsw-btn ${currentMode === 'matrix' ? 'active' : ''}"
+              id="bgsw-matrix"
+              aria-pressed="${currentMode === 'matrix'}"
+              title="Matrix (chuva de código)">
+        ${svgMatrix}
+      </button>
     `;
 
     document.body.appendChild(el);
@@ -191,7 +219,7 @@
   }
 
   function updateButtons(newMode) {
-    ['wave', 'ripple'].forEach((m) => {
+    ['wave', 'ripple', 'matrix'].forEach((m) => {
       const btn = document.getElementById(`bgsw-${m}`);
       if (!btn) return;
       const isActive = m === newMode;
@@ -205,16 +233,17 @@
     if (newMode === currentMode) return;
 
     // 1. Fade-out do canvas ativo
-    const oldId     = currentMode === 'wave' ? 'wave-canvas' : 'ripple-canvas';
-    const oldCanvas = document.getElementById(oldId);
+    const canvasIdMap = { wave: 'wave-canvas', ripple: 'ripple-canvas', matrix: 'matrix-canvas' };
+    const oldCanvas   = document.getElementById(canvasIdMap[currentMode]);
     if (oldCanvas) {
       oldCanvas.classList.add('bg-canvas-out');
       await new Promise((r) => setTimeout(r, 520));
     }
 
     // 2. Destrói o modo atual (libera memória / listeners)
-    if (currentMode === 'wave' && window.WaveBg)   window.WaveBg.destroy();
+    if (currentMode === 'wave'   && window.WaveBg)   window.WaveBg.destroy();
     if (currentMode === 'ripple' && window.RippleBg) window.RippleBg.destroy();
+    if (currentMode === 'matrix' && window.MatrixBg) window.MatrixBg.destroy();
 
     // 3. Atualiza estado
     currentMode = newMode;
@@ -242,6 +271,7 @@
     const sw = buildSwitcher();
     sw.querySelector('#bgsw-wave').addEventListener('click',   () => switchMode('wave'));
     sw.querySelector('#bgsw-ripple').addEventListener('click', () => switchMode('ripple'));
+    sw.querySelector('#bgsw-matrix').addEventListener('click', () => switchMode('matrix'));
   }
 
   // Aguarda o DOM (seguro para uso com defer ou carregamento tardio)
