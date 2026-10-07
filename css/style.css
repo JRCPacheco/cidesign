@@ -819,7 +819,7 @@ h3 {
 }
 .recess-card {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: 180px minmax(0, 1fr) 180px;
   gap: 2rem;
   align-items: center;
   padding: 2rem;
@@ -832,6 +832,7 @@ h3 {
 .recess-badge {
   display: grid;
   place-items: center;
+  gap: 1rem;
 }
 
 .recess-badge img {
@@ -839,6 +840,11 @@ h3 {
   height: 140px;
   object-fit: contain;
   filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.32));
+}
+
+.recess-badge .button {
+  font-size: 0.85rem;
+  padding: 0.7rem 1.1rem;
 }
 
 .recess-copy h2 {
@@ -1048,9 +1054,13 @@ h3 {
   .ecosystem,
   .site-footer,
   .section-heading,
-  .products-subhead,
+  .products-subhead {
+    grid-template-columns: 1fr;
+  }
+
   .recess-card {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .section-heading,
