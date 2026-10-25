@@ -1,118 +1,88 @@
-// App screenshot carousel — infinite forward loop
+// CIDesign — menu no celular, ano no rodapé e o segredo do Matrix.
 (function () {
-  const carousel = document.querySelector("#appCarousel");
-  const track = document.querySelector("#carouselTrack");
-  const dotsEl = document.querySelector("#carouselDots");
-  const appNameEl = document.querySelector("#carouselAppName");
-  const prevBtn = document.querySelector("#carouselPrev");
-  const nextBtn = document.querySelector("#carouselNext");
-  if (!track || !dotsEl) return;
+  'use strict';
 
-  const realSlides = Array.from(track.querySelectorAll(".carousel-slide"));
-  const totalReal = realSlides.length;
-
-  // Clone all slides and append — enables seamless forward loop
-  realSlides.forEach(s => track.appendChild(s.cloneNode(true)));
-
-  const allSlides = Array.from(track.querySelectorAll(".carousel-slide"));
-  let current = 0;
-  let timer;
-
-  allSlides.forEach(slide => {
-    const img = slide.querySelector("img");
-    if (img) img.addEventListener("error", () => { img.style.visibility = "hidden"; });
-  });
-
-  // Build dots for real slides only
-  realSlides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.className = "carousel-dot" + (i === 0 ? " is-active" : "");
-    dot.setAttribute("aria-label", "Slide " + (i + 1));
-    dot.addEventListener("click", () => { goTo(i); resetAuto(); });
-    dotsEl.appendChild(dot);
-  });
-
-  function computeOffset(idx) {
-    const slideW = allSlides[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(track).gap) || 20;
-    const vpW = track.parentElement.offsetWidth;
-    return idx * (slideW + gap) - (vpW / 2 - slideW / 2);
-  }
-
-  function updateMeta(realIdx) {
-    dotsEl.querySelectorAll(".carousel-dot").forEach((d, i) => {
-      d.classList.toggle("is-active", i === realIdx);
+  /* ── Menu no celular ─────────────────────────────────────── */
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    const fechar = () => { toggle.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); };
+    toggle.addEventListener('click', () => {
+      const aberto = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!aberto));
+      nav.classList.toggle('is-open', !aberto);
     });
-    if (appNameEl) appNameEl.textContent = realSlides[realIdx].dataset.app || "";
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', fechar));
   }
 
-  function setPos(idx, animate) {
-    track.style.transition = animate
-      ? "transform 420ms cubic-bezier(0.4, 0, 0.2, 1)"
-      : "none";
-    track.style.transform = "translateX(" + (-computeOffset(idx)) + "px)";
+  const ano = document.getElementById('current-year');
+  if (ano) ano.textContent = new Date().getFullYear();
+
+  /* ── Segredo: Matrix ─────────────────────────────────────────
+     Liga com "iddqd" (modo deus do Doom), com o código Konami
+     (↑↑↓↓←→←→BA) ou com um clique no título do Recreio.
+     Esc ou o mesmo código desligam. O efeito só é baixado na
+     primeira vez que alguém o descobre. */
+  const SCRIPT = (function () {
+    const s = document.currentScript;
+    return s && s.src ? s.src.replace(/main\.js(\?.*)?$/, 'matrix-bg.js') : 'js/matrix-bg.js';
+  })();
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+
+  function avisar(texto) {
+    if (!toast) return;
+    toast.textContent = texto;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 3200);
   }
 
-  function goTo(index, animate = true) {
-    current = index;
-    setPos(current, animate);
-    updateMeta(current % totalReal);
+  function flash() {
+    const f = document.createElement('div');
+    f.className = 'flash';
+    document.body.appendChild(f);
+    f.addEventListener('animationend', () => f.remove());
+    setTimeout(() => f.remove(), 900);
   }
 
-  // After reaching cloned zone, silently reset to real position
-  track.addEventListener("transitionend", () => {
-    if (current >= totalReal) {
-      current = current % totalReal;
-      setPos(current, false);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        track.style.transition = "transform 420ms cubic-bezier(0.4, 0, 0.2, 1)";
-      }));
-    }
+  function ligar() {
+    if (window.MatrixBg) return;
+    flash();
+    document.body.classList.add('matrix');
+    const s = document.createElement('script');
+    s.src = SCRIPT;
+    s.onerror = () => document.body.classList.remove('matrix');
+    document.body.appendChild(s);
+    avisar('Modo deus ativado. Esc para sair.');
+  }
+
+  function desligar() {
+    if (!window.MatrixBg) return;
+    window.MatrixBg.destroy();
+    document.body.classList.remove('matrix');
+    avisar('De volta ao mundo real.');
+  }
+
+  const alternar = () => (window.MatrixBg ? desligar() : ligar());
+
+  const CODIGOS = [
+    ['i', 'd', 'd', 'q', 'd'],
+    ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'],
+  ];
+  let buffer = [];
+
+  document.addEventListener('keydown', e => {
+    const alvo = e.target;
+    if (alvo && (alvo.isContentEditable || /^(input|textarea|select)$/i.test(alvo.tagName))) return;
+    const tecla = (e.key || '').toLowerCase();
+    if (tecla === 'escape') { desligar(); return; }
+    buffer.push(tecla);
+    if (buffer.length > 10) buffer = buffer.slice(-10);
+    const casou = CODIGOS.some(c => c.every((k, i) => buffer[buffer.length - c.length + i] === k));
+    if (casou) { buffer = []; alternar(); }
   });
 
-  function startAuto() { timer = setInterval(() => goTo(current + 1), 3500); }
-  function resetAuto() { clearInterval(timer); startAuto(); }
-
-  if (nextBtn) nextBtn.addEventListener("click", () => { goTo(current + 1); resetAuto(); });
-  if (prevBtn) prevBtn.addEventListener("click", () => {
-    goTo(current - 1 < 0 ? totalReal - 1 : current - 1);
-    resetAuto();
-  });
-
-  const viewport = track.parentElement;
-  viewport.addEventListener("mouseenter", () => clearInterval(timer));
-  viewport.addEventListener("mouseleave", startAuto);
-
-  // Wait for full layout before positioning — avoids wrong offsetWidth on DOMContentLoaded
-  window.addEventListener("load", () => {
-    goTo(0, false);
-    if (carousel) carousel.classList.add("is-ready");
-    startAuto();
-  });
-
-  // Recalculate on resize
-  window.addEventListener("resize", () => setPos(current, false));
-}());
-
-const navToggle = document.querySelector(".nav-toggle");
-const siteNav = document.querySelector(".site-nav");
-const yearTarget = document.querySelector("#current-year");
-
-if (yearTarget) {
-  yearTarget.textContent = new Date().getFullYear();
-}
-
-if (navToggle && siteNav) {
-  navToggle.addEventListener("click", () => {
-    const expanded = navToggle.getAttribute("aria-expanded") === "true";
-    navToggle.setAttribute("aria-expanded", String(!expanded));
-    siteNav.classList.toggle("is-open", !expanded);
-  });
-
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navToggle.setAttribute("aria-expanded", "false");
-      siteNav.classList.remove("is-open");
-    });
-  });
-}
+  const recreio = document.querySelector('[data-easter="recreio"]');
+  if (recreio) recreio.addEventListener('click', alternar);
+})();
