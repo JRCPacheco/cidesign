@@ -119,6 +119,7 @@ body.matrix .lower { background: transparent; }
 .feature-kind { font-size: 14px; font-weight: 700; color: var(--gold) !important; }
 .feature h3 { font-size: 28px; }
 .feature .button { justify-self: start; }
+.feature-actions { display: flex; flex-wrap: wrap; gap: 10px 12px; }
 .feature-book { grid-template-columns: 0.8fr 1.2fr; }
 .feature-book .feature-media { display: flex; align-items: center; justify-content: center; padding: 24px 0 24px 24px; }
 .feature-book .feature-media img { aspect-ratio: 377 / 560; width: 100%; height: auto; object-fit: contain; border-radius: 6px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); }
